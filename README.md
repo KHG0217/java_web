@@ -24,4 +24,5 @@
   - Filter 사용
     - Filter 만드는법
     - 강제 리다일렉트 진행할 경로 분기처리
-  - 비동기 사용
+  - Promise객체
+     - .text(),json() 차이
