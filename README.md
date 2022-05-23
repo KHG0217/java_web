@@ -21,8 +21,9 @@
   - HttpSession객체 이용하여 Session Scope에 저장
   - forward move(servlet 응답 -> jsp 표출)
 ## 5.Step04_Final
-  - Filter 사용
-    - Filter 만드는법
-    - 강제 리다일렉트 진행할 경로 분기처리
-  - Promise객체
+  - 홈페이지 만들기
+    - Filter 사용
+      - Filter 만드는법
+      - 강제 리다일렉트 진행할 경로 분기처리
+    - Promise객체
      - .text(),json() 차이
