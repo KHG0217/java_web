@@ -5,12 +5,14 @@
     pageEncoding="UTF-8"%>
 <%
 	//로그인후 가야할 목적지 정보
-	String url=request.getParameter("url");
+	String url=request.getParameter("url"); // ex) 공부경로,게임경로
+											// 여기 url을 입력하면 특수문자를 인식할 수 없다.
 	//로그인 실패를 대비해서 목적지 정보를 인코딩한 결과도 준비한다.
-	String encodedUrl=URLEncoder.encode(url);
+	String encodedUrl=URLEncoder.encode(url); // 특수문자(&,?등을 url이 인식할 수 있는 기호로 바꿔서 가져 가기 위해서)
+					  // URLEncoder.encode()메소드를 이용하여 바꿔 보관한다.
+											  // => 특수문자도 같이 url로 가져가기 위함이다.
 
 	//1. 폼 전송되는 아이디, 비밀번호 읽어오기
-	request.setCharacterEncoding("utf-8");
 	String id=request.getParameter("id");
 	String pwd=request.getParameter("pwd");
 	//2. DB 에 실제로 존재하는 맞는 정보인지 확인 한다.

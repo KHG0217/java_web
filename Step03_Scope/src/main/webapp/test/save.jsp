@@ -4,6 +4,7 @@
 	request.setCharacterEncoding("utf-8");
 	String nick=request.getParameter("nick");
 	
+	
 	//HttpSession 객체에 "nick"이라는 키값으로 입력한 nick 저장하기
 	session.setAttribute("nick", nick);
 	

@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
 <%
 	//1. 폼 전송되는 아이디, 비밀번호, 이메일 추출
-	request.setCharacterEncoding("utf-8");
 	String id=request.getParameter("id");
 	String pwd=request.getParameter("pwd");
 	String email=request.getParameter("email");

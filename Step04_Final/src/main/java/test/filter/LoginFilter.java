@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *  2. 어떤 요청에 대해 필터링을 할것인지 맵핑한다.
  */
 
-@WebFilter("/private/*")
+@WebFilter(urlPatterns = {"/private/*","/users/private/*"})
 public class LoginFilter implements Filter{
 
 	@Override
@@ -39,6 +39,8 @@ public class LoginFilter implements Filter{
 		HttpServletRequest req=(HttpServletRequest)request;
 		//자식 type 을 이용해서 HttpSession 객체의 참조값을 얻어낸다.
 		HttpSession session=req.getSession();
+		
+		
 		//로그인된 아이디가 있는지 읽어와 본다.
 		String id=(String)session.getAttribute("id");
 		//만일 로그인 된 상태라면 

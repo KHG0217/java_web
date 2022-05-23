@@ -1,0 +1,66 @@
+<%@page import="test.users.dao.UsersDao"%>
+<%@page import="test.users.dto.UsersDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+   //1. session scope 에서 로그인된 아이디 불러오기
+   String id=(String)session.getAttribute("id");
+   //2. DB 에서 가입 정보를 불러온다.
+   UsersDto dto=UsersDao.getInstance().getData(id);
+   //3. 응답한다.
+%>  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/users/private/info.jsp</title>
+</head>
+<body>
+   <div class="container">
+   <h1>가입 정보 입니다.</h1>
+      <table>
+         <tr>
+            <th>아이디</th>
+            <td><%=id %></td>
+         </tr>
+         <tr>
+            <th>프로필 이미지</th>
+            <td></td>
+         </tr>
+         <tr>
+            <th>비밀번호</th>
+            <td><a href="pwd_updateform.jsp">수정하기</a>현재 비밀번호<%=dto.getPwd() %></td>
+         </tr>
+         <tr>
+            <th>이메일</th>
+            <td><%=dto.getEmail() %></td>
+         </tr>
+         <tr>
+            <th>가입일</th>
+            <td><%=dto.getRegdate() %></td>
+         </tr>
+      </table>
+      <a href="updateform.jsp">개인정보수정</a>
+      <a href="javascript:deleteConfirm()">탈퇴</a>
+   </div>
+   <script>
+   	function deleteConfirm(){
+   		let isDelete=confirm("확인을 누르면 회원 탈퇴가 됩니다. 탈퇴 하시겠습니까?")
+   		if(isDelete){
+   			location.href="delete.jsp";
+   		}
+   	}
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
