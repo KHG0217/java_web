@@ -16,13 +16,7 @@
     순서대로 수행하고자 할때 사용합니다.
     - 특히 작업이 실패 되었을때 처리가 훨씬 수월 합니다.
  */
- /*
- Promise 는 
- 언제 끝날지 모르는 불확실한 비동기 작업을
- 콜백 지옥에 빠지지 않고
- 순서대로 수행하고자 할때 사용합니다.
- - 특히 작업이 실패 되었을때 처리가 훨씬 수월 합니다.
-*/
+
 function openDoor(){
  return new Promise(function(resolve){
     setTimeout(function(){
