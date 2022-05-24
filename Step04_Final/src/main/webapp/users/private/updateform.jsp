@@ -66,7 +66,7 @@
       });      
       
       //프로필 이미지를 선택하면(바뀌면) 실행할 함수 등록
-      document.querySelector("#image").addEventListener("change", function(){
+       document.querySelector("#image").addEventListener("change", function(){
          //폼에 입력한 데이터를 FormData 객체에 담기
          const data=new FormData(document.querySelector("#imageForm"));
          
