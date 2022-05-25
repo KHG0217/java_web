@@ -18,6 +18,12 @@
    #imageForm{
       display: none;
    }
+   #profileImage{
+   	width: 100px;
+   	height: 100px;
+   	border: 1px solid #cecece;
+   	border-radius: 50%;
+   }
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -33,7 +39,7 @@
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
             </svg>
          <%}else{ %>
-            <img src="${pageContext.request.contextPath }<%=dto.getProfile()%>">
+            <img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile()%>">
          <%} %>
       </a>
       <form action="update.jsp" method="post">
@@ -82,6 +88,7 @@
             console.log(data);
             // input name="profile" 요소의 value 값으로 이미지 경로 넣어주기
             document.querySelector("input[name=profile]").value=data.imagePath;
+            //													data의 imagePath오브젝트
             let img=`<img id="profileImage" 
                src="${pageContext.request.contextPath }\${data.imagePath}">`;
             document.querySelector("#profileLink").innerHTML=img;
