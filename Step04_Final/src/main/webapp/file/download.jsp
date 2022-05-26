@@ -19,10 +19,11 @@
    */
    FileDto dto=FileDao.getInstance().getData(num);
    //3. 서버의 파일시스템(upload) 에 저장된 파일에서 바이트 알갱이를 읽어서 출력한다(다운로드)
-   String orgFileName=dto.getOrgFileName();
+   String orgFileName=dto.getOrgFileName(); 
    String saveFileName=dto.getSaveFileName();
    //다운로드 시켜줄 파일의 실제 경로 구성하기 
    String path=request.getServletContext().getRealPath("/upload")+
+   //          =application.getRealPath("/upload")와 같음
                File.separator+saveFileName;
    //다운로드할 파일에서 읽어들일 스트림 객체 생성하기
    FileInputStream fis=new FileInputStream(path);
@@ -41,6 +42,8 @@
    }
    
    //응답 헤더 정보 설정
+   //                                            enodedName=filename을 알려주는 요소= 다운받을 파일명
+   //                                           orgFileName을 넣으면 되지만 공백과 세부처리를 하고나서 저장한다.
    response.setHeader("Content-Disposition","attachment;filename="+encodedName);
    response.setHeader("Content-Transfer-Encoding", "binary");
    

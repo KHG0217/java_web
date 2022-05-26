@@ -28,6 +28,8 @@
 	//4. 추가로 원본파일명, 저장된파일명, 파일사이즈도 얻어내서 FileDto 객체에 담아서
 	String orgFileName=mr.getOriginalFileName("myFile");
 	String saveFileName=mr.getFilesystemName("myFile");
+	
+	//파일 사이즈 알아내기 -> 다운로드 할 때 필요
 	long fileSize=mr.getFile("myFile").length();
 	
 
@@ -52,6 +54,7 @@
       <p>
          <%=writer %> 님이 업로드한 <%=orgFileName %> 파일을 저장했습니다.
          <a href="${pageContext.request.contextPath }/file/list.jsp">목록보기</a>
+         <div>경로보기</div>: <%=realPath %>
       </p>
    <%}else{ %>
       <p>
