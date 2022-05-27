@@ -25,12 +25,12 @@
 	<%if(isSuccess){ %>
 		<script>
 			alert("글이 수정되었습니다.");
-			location.href="${pageContext.request.contextPath }/cafe/list.jsp";
+			location.href="${pageContext.request.contextPath }/cafe/detail.jsp?num=<%=num%>";
 			
 		</script>
 	<%}else{ %>
 		alert("글 수정에 실패하였습니다");
-		location.href="${pageContext.request.contextPath }/cafe/list.jsp";
+		location.href="${pageContext.request.contextPath }/cafe/private/updateform.jsp?num=<%=num%>";
 	<%} %>
 </body>
 </html>
