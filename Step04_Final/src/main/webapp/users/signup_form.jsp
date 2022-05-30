@@ -93,7 +93,7 @@
          const pwd=document.querySelector("#pwd").value;
          const pwd2=document.querySelector("#pwd2").value;
          //비밀번호를 검증할 정규 표현식
-         let reg=/[\W]/;
+         let reg=/[\W][_]/;
          //만일 비밀번호가 정규 표현식을 통과 하지 못한다면 
          if(!reg.test(pwd)){      
             document.querySelector("#pwd").classList.add("is-invalid");

@@ -14,7 +14,7 @@
       <form v-on:submit="onSubmit" action="signup.jsp" method="post" id="signupForm">
          <div class="mb-3">
             <label class="control-label" for="id">아이디</label>
-            <input v-on:click="divClicked" v-model="idMsg" v-bind:class="classObjectId" class="form-control" type="text" name="id" id="id"/>
+            <input v-on:input="divClicked" v-model="msg" v-bind:class="[isAble? 'is-valid' : '', disAble? 'is-invalid' : '']" class="form-control"  type="text" name="id" id="id"/>
             <small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small>
             <div class="invalid-feedback">사용할 수 없는 아이디 입니다.</div>
          </div>
@@ -38,61 +38,63 @@
    </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
-      new Vue({
-         el:"#signupForm",
-         data:{
-            isIdValid:false,
-            isPwdValid:false,
-            isEmailValid:false,
-    		classObjectId:{'is-valid':true, 'is-invalid':true},
-            reg=/^[a-z].{4,9}$/,
-            idMsg="" 
-            
+	      new Vue({
 
-         },
-         methods:{
-            onSubmit(e){
-               //폼 전체의 유효성 여부
-               let isFormValid = this.isIdValid && this.isPwdValid && this.isEmailValid;
-               if(!isFormValid){
-                  //폼 제출 막기 
-                  e.preventDefault();
-               }
-               
-            }                
-         },
-         methods:{
-     		  divClicked(e){
+	    	 el:"#signupForm",
+	         data:{
+	        	msg:"",
+	            isIdValid:false,
+	            isPwdValid:false,
+	            isEmailValid:false,
+		    	isAble:false,
+		    	disAble:false,
 
-               
-               	if(!reg.test(this.idMsg)){
-               		is-invalid=true;
-               		isIdValid=false;
-               		return;
-               	}
-               	fetch("${pageContext.request.contextPath }/users/checkid.jsp?inputId="+inputId)
-               	.then(function(response)){
-               		return response.json();
-               	})
-         			.then(function(data){
-         				if(data.isExist){
-         					is-invalid=true;
-         					isIdValid=false;
-         				}else{
-         					is-valid=true;
-         					isIdValid=true;
-         				}
-         			});
-         
-               } 
-     	  }
-        
-
-     });
-      
-   
-    	 
-      
+	      		
+	            
+	         },
+		         methods:{
+			         	onSubmit(e){
+			               //폼 전체의 유효성 여부
+			               let isFormValid = this.isIdValid && this.isPwdValid && this.isEmailValid;
+			               if(!isFormValid){
+			                  //폼 제출 막기 
+			                  e.preventDefault();
+			               }
+			               
+			            },
+			            divClicked(e){
+			               this.disAble=false;
+			               this.isAble=false;
+		
+		
+			               
+			               const reg=/^[a-z].{4,9}$/;
+			               if(!reg.test(this.msg)){
+			            	   this.disAble=true;
+			            	   this.isIdValid=false;
+			            	   return;
+			               }
+			               fetch("${pageContext.request.contextPath }/users/checkid.jsp?inputId="+this.msg)
+			               .then(function(response){
+			            	   return response.json();
+			               })
+			               .then(function(data){
+			            	   if(data.isExist){
+									
+		
+			            		   
+			            	   }else{
+									
+				               };
+				               
+			               });
+		
+			               
+			          }
+		        }
+	        
+	     });
+                  	      
    </script>
 </body>
 </html>
