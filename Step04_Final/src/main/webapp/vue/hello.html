@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/vue/hello.html</title>
+</head>
+<body>
+	<h1>vue js 사용하기</h1>
+	<div id="app">
+		<p>오늘의 운세 : <strong>{{ fortune }}</strong></p>
+		<p>내이름은 : <strong>{{ myName }}</strong></p>
+		<button v-on:click="clicked" >눌러보셈</button>
+		<button v-on:click="clicked2">이름 바꾸기</button>
+		<br />
+		<input type="text" v-model="msg" />
+		<p>{{msg}}</p>
+		<ul>
+			<!-- v-for 반복문 -->
+			<li v-for="item in nums">{{item}}</li>
+		</ul>
+	</div>
+	<div>
+		<input type="text" id="inputMsg" />
+		<p id="result"></p>
+	</div>
+	<script>
+		document.querySelector("#inputMsg").addEventListener("input",function(){
+			document.querySelector("#result").innerText=this.value;
+		});
+	</script>
+	<!-- Vue객체를 생성할 수 있는 링크 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script>	
+		//Vue 객체를 생성하면서 object 전달하기
+		//object 형식 key:vaule, key2:value2 ....
+		//웹브라우저가 fortune 부분을 바꿈 (서버와 상관x)
+		new Vue({
+			// string type
+			el:"#app", //div id를 가르킴
+			//data 라는 방에 object넣은것
+			data:{
+				fortune:"동쪽으로 가면 귀인을 만나요 !",
+				myName:"김구라",
+				msg:"",
+				nums:[10, 20, 30]
+			},
+			methods:{
+				clicked:function(){
+					//함수 작성영역
+					//alert("엥");
+					this.fortune="오후에 vue를 배우게 될거에요.'";
+				},
+				clicked2:function(){
+					//this.myName="김혁규";
+					this.nums=["김구라","해골","원숭이"];
+				}
+			}
+		
+		});
+	</script>	
+</body>
+</html>

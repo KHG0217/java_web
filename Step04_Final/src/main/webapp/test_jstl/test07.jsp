@@ -22,9 +22,9 @@
 		<p>메세지에 "구라" 가 포함되어 있군요!</p>
 	</c:if>
 	<p>${str }</p>
-	<p>${fn:escapeXml(str) }</p>
+	<p>${fn:escapeXml(str) }</p> <!-- html형식으로 출력 x -->
 	<p>${content }</p>
-	<%-- content 문자열에서 개행 기호를  <br> 로 바꾸서 출력 --%>
+	<%-- content 문자열에서 개행	 기호를  <br> 로 바꾸서 출력 --%>
 	<p>${fn:replace(content, newLine, '<br>') }</p>
 </body>
 </html>

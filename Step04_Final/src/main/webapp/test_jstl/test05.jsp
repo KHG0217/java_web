@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%
 	//sample 데이터
 	request.setAttribute("size", 123456789);
@@ -15,7 +15,7 @@
 <body>
 	<p>
 		파일의 크기는 
-		<fmt:formatNumber value="123456789" pattern="#,###"/>
+		<fmt:formatNumber value="123456789" pattern="####"/>
 		byte 입니다.
 	</p>
 	<p>
