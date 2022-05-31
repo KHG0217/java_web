@@ -26,11 +26,15 @@
             재사용 가능한 컴포넌트를 전역으로 정의하기 
             Vue.component("컴포넌트 이름", {컴포넌트 데이터});
         */
-        Vue.component("my-component", {
+        /*
+        	Vue 객체에 component함수를 호출하면서 "String type"과 {object type} 호출
+        */
+        Vue.component("my-component", { //자식 컴퍼넌트
             template:"<div>{{msg}}</div>",
             data(){
                 return {
-                    msg:"div 입니다."
+                    msg:"div 입니다." //object를 리턴{msg:"div 입니다."}
+                					//자식 컴퍼넌트는 함수리턴값을 모델로 사용하게 사용해야 한다.
                 };
             }
         });
@@ -38,14 +42,14 @@
         let app=new Vue({
             el:"#app",
             data:{
-                greet:"안녕하세요!"
+                greet:"안녕하세요!1" //root component에서만 사용가능 
             }
         });
         let app2=new Vue({
             el:"#app2",
             data:function(){
                 return {
-                    greet:"안녕하세요!"
+                    greet:"안녕하세요!2" //함수리턴값을 모델로 사용가능  자식 컴퍼넌트, 루트 컴퍼넌트 모두 사용가능
                 };
             }
         });
@@ -53,7 +57,7 @@
             el:"#app3",
             data(){
                 return {
-                    greet:"안녕하세요!"
+                    greet:"안녕하세요!3"
                 };
             }
         });

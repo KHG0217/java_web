@@ -15,24 +15,30 @@
     </style>
 </head>
 <body>
+	<!-- 클라이언트 사이드 랜더링 <-> cafe/list2.jsp -->
     <h1>component 정의하고 사용하기</h1>
     <div id="app">
         <my-component></my-component>
         <my-component></my-component>
         <my-component></my-component>
+        <input type="text" v-model="msg" />
         <your-component v-bind:greet="'안녕하세요!'"></your-component>
+        <your-component v-bind:greet="msg"></your-component>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         let app=new Vue({
             el:"#app",
+            data:{
+            	msg:""
+            },
             components:{
                 "my-component":{
                     template:"<div class='box'> box </div>"
                 },
                 "your-component":{
                     template:"<div class='box'>{{greet}}</div>",
-                    props:["greet"]
+                    props:["greet"]//greet이라는 키를 v-bind:greet으로 담을 수 있음
                 }
             }
         });

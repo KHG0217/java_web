@@ -14,15 +14,17 @@
             <figure-component 
                 v-for="(item, index) in imageList"
                 v-bind:imageinfo="item"
-                v-bind:key="index"></figure-component>
+                v-bind:key="index"> <!-- 하나하나 구분할 수있는 키값으로 인덱스를 넣어줌 -->
+            </figure-component>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+  //이미지 컨텐츠를 나타낼때 figure
         Vue.component("figure-component",{
             template:`
             <div class="col">
-                <figure class="figure">
+                <figure class="figure"> 
                     <img v-bind:src="imageinfo.src" class="figure-img img-fluid rounded">
                     <figcaption class="figure-caption">{{imageinfo.caption}}</figcaption>
                 </figure>
