@@ -7,7 +7,7 @@ import org.json.JSONWriter;
 
 public class MainClass01 {
 	public static void main(String[] args) {
-		//HashMap 객체에 data를 담고
+		//HashMap 객체에 data를 담고 {}
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("num", 1);
 		map.put("name", "김구라");

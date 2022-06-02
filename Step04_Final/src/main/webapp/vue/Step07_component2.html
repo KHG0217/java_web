@@ -10,9 +10,9 @@
     <h1>component 사용예제</h1>
     <div id="app">
         <h2>친구 목록 입니다.</h2>
-        <friends-component v-bind:friends="friends"></friends-component>
+        <friends-component v-bind:a="friends"></friends-component>
         <h2>동물 친구 목록 입니다.</h2>
-        <friends-component v-bind:friends="friends2"></friends-component>
+        <friends-component v-bind:a="friends2"></friends-component>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -27,11 +27,11 @@
                 "friends-component":{
                     template:`
                         <ul>
-                            <li v-for="item in friends">{{item}}</li>
+                            <li v-for="item in a">{{item}}</li>
 
                         </ul>
                     `,
-                    props:["friends"]
+                    props:["a"]
                 }
             }
         });
