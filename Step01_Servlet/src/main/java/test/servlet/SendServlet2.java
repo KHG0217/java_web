@@ -18,7 +18,7 @@ public class SendServlet2 extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		
 		//클라이언트가 전송한 요청 파라미터 추출하기
-		String msg= req.getParameter("msg");
+		Object msg= req.getParameter("msg");
 		System.out.println("전송된 문자열:"+msg);
 		
 				

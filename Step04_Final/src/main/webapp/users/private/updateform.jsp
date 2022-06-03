@@ -63,6 +63,7 @@
          <button type="submit">업로드</button>
       </form>
    </div>
+   <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
    <script>
 
       //프로필 이미지 링크를 클릭하면 
@@ -71,16 +72,12 @@
          document.querySelector("#image").click();
       });      
       
+      
       //프로필 이미지를 선택하면(바뀌면) 실행할 함수 등록
        document.querySelector("#image").addEventListener("change", function(){
-         //폼에 입력한 데이터를 FormData 객체에 담기
-         const data=new FormData(document.querySelector("#imageForm"));
+         const form=document.querySelector("#imageForm");
          
-         //페이지 전환없이 fetch() 함수를 이용해서 폼 전송하기
-         fetch("profile_upload.jsp", {
-            method:"post",
-            body:data
-         })
+		 ajaxFormPromise(form)
          .then(function(response){
             return response.json();
          })
